@@ -1,0 +1,38 @@
+# High-level ablation plan. Use --only to run one family at a time.
+
+# 1. Item-scale ablation. Each value requires re-running prepare_data.py.
+item_counts: [5000, 10000, 20000, 50000]
+
+# Datasets/config profiles to run with the same ablation schema.
+base_configs:
+  - configs/retailrocket_10k.yaml
+  - configs/movielens10m_10k.yaml
+
+# 2. Graph sparsity ablation. Each value requires re-running prepare_data.py.
+top_k: [5, 10, 20]
+
+# 3. COSTA Kronecker item/spatial latent dimension ablation.
+# These runs are COSTA-only to avoid re-running all baselines. The temporal
+# latent dimension defaults to B-1, so B=4 -> d_time=3, B=8 -> d_time=7, and B=16 -> d_time=15.
+costa_d_item: [16, 32, 64]
+costa_d_time: B-1
+
+# 4. Treatment probability ablation. For p != 0.5, skip the original static OCD
+# baseline in the paper tables unless explicitly studying the general-p extension.
+p_values: [0.1, 0.2, 0.5]
+designs_for_p_half: [independent, rbsd_approx, cluster_leiden, static_graph_ocd, COSTA, COSTA_cluster_no_kro, COSTA_cluster_kro, COSTA_IC_lam0.2, COSTA_IC_lam1, COSTA_IC_lam5]
+designs_for_p_nonhalf: [independent, rbsd_approx, cluster_leiden, COSTA, COSTA_cluster_no_kro, COSTA_cluster_kro, COSTA_IC_lam0.2, COSTA_IC_lam1, COSTA_IC_lam5]
+
+# 5. Time horizon levels. B is an outer loop across all other ablations:
+# item-count, top-K, COSTA latent-dimension, and p ablations are repeated for
+# B=4, B=8, and B=16.
+B_values: [4, 8, 16]
+cross_B_for_all_ablations: true
+
+# Extra methods that can be added to completed V12-style result folders with
+# scripts/run_extra_cluster_costa_grid.py. These runs append/replace only the
+# listed designs in existing simulation_summary.csv files.
+extra_cluster_costa_designs: [COSTA_cluster_no_kro, COSTA_cluster_kro]
+
+# Extra COSTA-IC variants appended to already-completed folders.
+extra_costa_ic_designs: [COSTA_IC_lam0.2, COSTA_IC_lam1, COSTA_IC_lam5]

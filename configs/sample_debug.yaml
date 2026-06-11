@@ -1,0 +1,15 @@
+extends: sample.yaml
+
+simulation:
+  mc: 2
+  models: linear
+  designs: independent,COSTA
+
+optimization:
+  steps: 2
+  d_item: 4
+  d_time: B-1
+
+monitoring:
+  no_progress: true
+  no_plot: true

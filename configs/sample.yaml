@@ -1,0 +1,22 @@
+extends: base.yaml
+
+# Tiny built-in dataset for smoke tests and code checks.
+data:
+  dataset: sample
+  raw_dir: data/sample
+  output_root: data/processed
+  sample_file: data/sample/interactions.csv
+  n_items: 120
+  n_blocks: 4
+  top_k: 10
+  embed_dim: 16
+  min_user_events: 1
+
+simulation:
+  prepared_dir: data/processed/sample_top120_b4_k10
+  mc: 5
+
+optimization:
+  steps: 10
+  d_item: 8
+  d_time: B-1

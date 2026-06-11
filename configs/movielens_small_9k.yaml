@@ -1,0 +1,17 @@
+extends: base.yaml
+
+# Lightweight MovieLens latest-small fallback for smoke tests only.
+data:
+  dataset: movielens
+  raw_dir: data/raw/ml-latest-small
+  output_root: data/processed
+  n_items: 9000
+  n_blocks: 4
+  top_k: 10
+  embed_dim: 64
+  include_embed_dim_in_name: false
+  min_user_events: 3
+
+simulation:
+  prepared_dir: data/processed/movielens_top9k_b4_k10
+  mc: 50

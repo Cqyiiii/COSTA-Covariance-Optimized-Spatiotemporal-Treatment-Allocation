@@ -1,0 +1,14 @@
+numpy>=1.24
+pandas>=2.0
+scipy>=1.10
+scikit-learn>=1.2
+torch>=2.0
+pyyaml>=6.0
+tqdm>=4.60
+matplotlib>=3.7
+networkx>=3.0
+# Optional but recommended for the Leiden cluster baseline. If unavailable, the
+# code falls back to NetworkX Louvain unless --cluster-fallback none is used.
+python-igraph>=0.11
+leidenalg>=0.10
+seaborn>=0.13

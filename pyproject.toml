@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "costa-design"
+version = "0.1.0"
+description = "Covariance-optimized causal estimation and valid inference under network spillover and temporal carryover."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+  {name = "Qianyi Chen", email = "cqy22@mails.tsinghua.edu.cn"},
+  {name = "Bo Li", email = "libo@sem.tsinghua.edu.cn"}
+]
+dependencies = [
+  "numpy>=1.24",
+  "pandas>=2.0",
+  "scipy>=1.10",
+  "scikit-learn>=1.2",
+  "torch>=2.0",
+  "pyyaml>=6.0",
+  "tqdm>=4.60",
+  "matplotlib>=3.7",
+  "networkx>=3.0",
+  "seaborn>=0.13"
+]
+
+[project.optional-dependencies]
+leiden = ["python-igraph>=0.11", "leidenalg>=0.10"]
+dev = ["pytest>=7.0"]
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -1,0 +1,23 @@
+# Focused COSTA-IC component ablation for the theory/CLT section.
+# Default setting: N=10k, B=8, K=10, p in {0.2, 0.5}.
+
+base_configs:
+  - configs/retailrocket_10k.yaml
+  - configs/movielens10m_10k.yaml
+
+n_items: 10000
+n_blocks: 8
+top_k: 10
+p_values: [0.2, 0.5]
+models: [linear, nonlinear, demand]
+mc: 500
+ci_level: 0.90
+
+# COSTA-IC optimization.
+steps: 400
+d_item: 16
+d_time: B-1
+lambda_local_grid: [0.01, 0.05, 0.1, 0.2, 0.5, 2.0, 5.0]
+ic_select_weight: 1.0
+n_far_pairs: 50000
+variance_mode: conservative

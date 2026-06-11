@@ -1,0 +1,59 @@
+# Shared COSTA simulation defaults. Dataset-specific configs extend this file
+# and override only data paths / item counts when needed.
+seed: 123
+
+simulation:
+  output_root: outputs/sim
+  p: 0.5
+  mc: 500
+  models: linear,nonlinear,demand
+  designs: independent,rbsd_approx,cluster_leiden,static_graph_ocd,COSTA,COSTA_cluster_no_kro,COSTA_cluster_kro,COSTA_IC_lam0.2,COSTA_IC_lam1,COSTA_IC_lam5
+
+outcomes:
+  gamma: 0.08
+  eta: 0.10
+  noise_sd: 0.50
+  item_shock_sd: 1.00
+  block_shock_sd: 0.20
+  beta_base: 0.08
+  beta_pop_scale: 0.04
+  beta_noise_sd: 0.12
+  alpha_traffic_scale: 0.40
+  alpha_item_sd: 0.10
+  alpha_block_sd: 0.05
+  alpha_hat_item_sd: 0.90
+  alpha_hat_block_sd: 0.25
+  alpha_hat_cell_sd: 0.45
+  weight_floor_frac: 0.05
+  nonlinear_saturation_scale: 1.50
+  nonlinear_lag2_scale: 0.50
+  interaction_scale: 0.50
+  second_hop_scale: 0.25
+  demand_temporal_scale: 3.00
+  demand_cross_temporal_scale: 1.00
+  demand_substitution_scale: 1.00
+  demand_treated_buffer: 0.40
+  demand_saturation_scale: 0.25
+
+optimization:
+  steps: 400
+  lr: 0.05
+  # Spatial/item latent dimension d_I for COSTA and static graph OCD.
+  # Ablations sweep this value, typically [16, 32, 64].
+  d_item: 16
+  # Temporal latent dimension d_T for COSTA. B-1 resolves at run time using the
+  # prepared data's number of blocks; B=4 -> d_T=3, B=8 -> d_T=7, and B=16 -> d_T=15.
+  d_time: B-1
+  lambda_var: 0.05
+  lambda_balance: 0.05
+  w_comp: 1.0
+  w_temp: 1.0
+  switch_min: 0.10
+  cluster_resolution: 1.0
+  cluster_fallback: louvain
+
+monitoring:
+  monitor_every: 1
+  monitor_repetition: 0
+  no_progress: false
+  no_plot: false

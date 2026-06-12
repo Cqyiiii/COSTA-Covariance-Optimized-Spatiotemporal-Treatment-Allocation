@@ -1,6 +1,6 @@
 # COSTA
 
-**COSTA: Covariance-Optimized Causal Estimation and Valid Inference under Network Spillover and Temporal Carryover**
+**COSTA: Covariance-Optimized Design and Causal Inference under Network-Temporal Interference**
 
 Authors: **Qianyi Chen** and **Bo Li**  
 School of Economics and Management, Tsinghua University  

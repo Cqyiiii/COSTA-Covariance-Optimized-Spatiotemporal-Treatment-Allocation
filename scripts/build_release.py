@@ -18,6 +18,7 @@ import zipfile
 # newly created credential file, dataset, notebook output, or local artifact.
 SOURCE_FILES = (
     ".gitignore", "README.md", "pyproject.toml", "requirements.txt", "docs/RELEASING.md",
+    "docs/assets/costa-overview.svg",
     "configs/ablation_grid.yaml", "configs/base.yaml",
     "configs/clt_ic_component_ablation.yaml", "configs/clt_validation.yaml",
     "configs/inference_revised26.yaml", "configs/movielens10m_10k.yaml",
@@ -136,7 +137,7 @@ def collect_source(source: Path) -> dict[str, str]:
             raise ReleaseError("Data and generated artifacts cannot be added to the allowlist")
         if any(part == "__pycache__" or part.endswith(".egg-info") for part in relative.parts):
             raise ReleaseError("Cache and installation metadata cannot be added to the allowlist")
-        if relative.suffix not in {".py", ".sh", ".md", ".yaml", ".toml", ".txt"} and name != ".gitignore":
+        if relative.suffix not in {".py", ".sh", ".md", ".yaml", ".toml", ".txt", ".svg"} and name != ".gitignore":
             raise ReleaseError("Only reviewed source/documentation file types are allowed")
         path = no_symlinks(source / name)
         if not path.is_file() or not stat.S_ISREG(path.stat().st_mode):

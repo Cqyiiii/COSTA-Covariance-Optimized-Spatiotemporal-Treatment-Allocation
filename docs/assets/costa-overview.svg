@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="540" viewBox="0 0 1440 540" role="img" aria-labelledby="overview-title overview-desc">
+  <title id="overview-title">Design treatment dependence across units and time</title>
+  <desc id="overview-desc">Conceptual overview of COSTA. Network spillover and temporal carryover motivate jointly designed treatment dependence. Latent item and time factors are combined through a Kronecker product and mapped to binary unit-by-block treatment assignments with marginal treatment probability p. Latent factors are not Bernoulli covariance matrices. Outputs support Horvitz-Thompson estimation, Monte Carlo comparisons, and inference diagnostics. This schematic contains no experimental results.</desc>
+  <defs>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; }
+      .heading { fill: #142c46; font-size: 21px; font-weight: 700; }
+      .body { fill: #52677b; font-size: 15px; }
+      .small { fill: #657789; font-size: 13px; }
+      .axis { fill: #52677b; font-size: 14px; }
+      .formula { fill: #142c46; font-size: 25px; font-style: italic; }
+      .number { fill: #ffffff; font-size: 15px; font-weight: 700; text-anchor: middle; }
+      .network { stroke: #238c88; stroke-width: 3; }
+      .carryover { stroke: #8875c0; stroke-width: 2; marker-end: url(#time-arrow); }
+    </style>
+    <marker id="time-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 Z" fill="#8875c0"/>
+    </marker>
+    <marker id="flow-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 Z" fill="#b2bfcb"/>
+    </marker>
+  </defs>
+
+  <rect width="1440" height="540" rx="20" fill="#f7f9fc"/>
+  <text x="44" y="56" fill="#142c46" font-size="32" font-weight="700">Design treatment dependence across units and time</text>
+  <text x="46" y="89" class="body" font-size="17">COSTA · covariance-optimized design under network spillover and temporal carryover</text>
+
+  <rect x="44" y="122" width="426" height="332" rx="16" fill="#ffffff" stroke="#dce4ec"/>
+  <rect x="507" y="122" width="426" height="332" rx="16" fill="#ffffff" stroke="#dce4ec"/>
+  <rect x="970" y="122" width="426" height="332" rx="16" fill="#ffffff" stroke="#dce4ec"/>
+  <path d="M 478 292 H 498" stroke="#b2bfcb" stroke-width="2" marker-end="url(#flow-arrow)"/>
+  <path d="M 941 292 H 961" stroke="#b2bfcb" stroke-width="2" marker-end="url(#flow-arrow)"/>
+
+  <circle cx="80" cy="159" r="15" fill="#238c88"/>
+  <text x="80" y="164" class="number">1</text>
+  <text x="105" y="166" class="heading">Structured interference</text>
+  <text x="69" y="197" class="body">Neighbors interact; effects can carry forward.</text>
+
+  <g class="network">
+    <path d="M 137 247 V 355 M 226 247 V 355 M 315 247 V 355 M 404 247 V 355"/>
+  </g>
+  <g class="carryover">
+    <path d="M 150 247 H 210 M 239 247 H 299 M 328 247 H 388"/>
+    <path d="M 150 301 H 210 M 239 301 H 299 M 328 301 H 388"/>
+    <path d="M 150 355 H 210 M 239 355 H 299 M 328 355 H 388"/>
+  </g>
+  <g fill="#e0f1ee" stroke="#238c88" stroke-width="2.5">
+    <circle cx="137" cy="247" r="10"/><circle cx="226" cy="247" r="10"/><circle cx="315" cy="247" r="10"/><circle cx="404" cy="247" r="10"/>
+    <circle cx="137" cy="301" r="10"/><circle cx="226" cy="301" r="10"/><circle cx="315" cy="301" r="10"/><circle cx="404" cy="301" r="10"/>
+    <circle cx="137" cy="355" r="10"/><circle cx="226" cy="355" r="10"/><circle cx="315" cy="355" r="10"/><circle cx="404" cy="355" r="10"/>
+  </g>
+  <g class="axis">
+    <text x="73" y="252">unit i</text><text x="73" y="306">unit j</text><text x="73" y="360">unit k</text>
+    <text x="137" y="387" text-anchor="middle">b₁</text><text x="226" y="387" text-anchor="middle">b₂</text><text x="315" y="387" text-anchor="middle">b₃</text><text x="404" y="387" text-anchor="middle">b₄</text>
+  </g>
+  <path d="M 76 421 H 100" stroke="#238c88" stroke-width="3"/>
+  <text x="109" y="426" class="small">Network spillover</text>
+  <path d="M 252 421 H 277" stroke="#8875c0" stroke-width="2" marker-end="url(#time-arrow)"/>
+  <text x="288" y="426" class="small">Time carryover</text>
+
+  <circle cx="543" cy="159" r="15" fill="#8875c0"/>
+  <text x="543" y="164" class="number">2</text>
+  <text x="568" y="166" class="heading">Joint dependence design</text>
+  <text x="532" y="197" class="body">Combine latent item and time factors.</text>
+
+  <g transform="translate(559 238)">
+    <rect width="105" height="105" rx="6" fill="#f2f7f7" stroke="#d7e7e5"/>
+    <g fill="#238c88">
+      <rect x="5" y="5" width="29" height="29" rx="3"/>
+      <rect x="38" y="38" width="29" height="29" rx="3"/>
+      <rect x="71" y="71" width="29" height="29" rx="3"/>
+    </g>
+    <g fill="#96ccc3">
+      <rect x="38" y="5" width="29" height="29" rx="3"/>
+      <rect x="5" y="38" width="29" height="29" rx="3"/>
+      <rect x="71" y="38" width="29" height="29" rx="3"/>
+      <rect x="38" y="71" width="29" height="29" rx="3"/>
+    </g>
+    <g fill="#dceee9">
+      <rect x="71" y="5" width="29" height="29" rx="3"/>
+      <rect x="5" y="71" width="29" height="29" rx="3"/>
+    </g>
+  </g>
+  <text x="711" y="304" text-anchor="middle" fill="#67788a" font-size="41">⊗</text>
+  <g transform="translate(758 238)">
+    <rect width="105" height="105" rx="6" fill="#f6f3fa" stroke="#e4dfef"/>
+    <g fill="#8875c0">
+      <rect x="5" y="5" width="21" height="21" rx="3"/><rect x="30" y="30" width="21" height="21" rx="3"/>
+      <rect x="55" y="55" width="21" height="21" rx="3"/><rect x="80" y="80" width="21" height="21" rx="3"/>
+    </g>
+    <g fill="#c1b4df">
+      <rect x="30" y="5" width="21" height="21" rx="3"/><rect x="5" y="30" width="21" height="21" rx="3"/>
+      <rect x="55" y="30" width="21" height="21" rx="3"/><rect x="30" y="55" width="21" height="21" rx="3"/>
+      <rect x="80" y="55" width="21" height="21" rx="3"/><rect x="55" y="80" width="21" height="21" rx="3"/>
+    </g>
+    <g fill="#e8e1f2">
+      <rect x="55" y="5" width="21" height="21" rx="3"/><rect x="80" y="5" width="21" height="21" rx="3"/>
+      <rect x="80" y="30" width="21" height="21" rx="3"/><rect x="5" y="55" width="21" height="21" rx="3"/>
+      <rect x="5" y="80" width="21" height="21" rx="3"/><rect x="30" y="80" width="21" height="21" rx="3"/>
+    </g>
+  </g>
+  <text x="611" y="375" class="formula" text-anchor="middle">R<tspan baseline-shift="sub" font-size="15">item</tspan></text>
+  <text x="810" y="375" class="formula" text-anchor="middle">R<tspan baseline-shift="sub" font-size="15">time</tspan></text>
+  <text x="720" y="406" class="body" text-anchor="middle">Optimize dependence, then map to binary.</text>
+  <text x="720" y="429" class="small" text-anchor="middle">Latent factors are not Bernoulli covariances.</text>
+
+  <circle cx="1006" cy="159" r="15" fill="#142c46"/>
+  <text x="1006" y="164" class="number">3</text>
+  <text x="1031" y="166" class="heading">Correlated assignments</text>
+  <text x="995" y="197" class="body">Binary treatment over unit-by-block cells.</text>
+  <g class="axis" text-anchor="middle">
+    <text x="1109" y="231">b₁</text><text x="1172" y="231">b₂</text><text x="1235" y="231">b₃</text><text x="1298" y="231">b₄</text>
+  </g>
+  <g class="axis">
+    <text x="1013" y="274">unit i</text><text x="1013" y="321">unit j</text><text x="1013" y="368">unit k</text>
+  </g>
+  <g fill="#238c88">
+    <rect x="1083" y="246" width="52" height="40" rx="6"/><rect x="1146" y="246" width="52" height="40" rx="6"/>
+    <rect x="1083" y="293" width="52" height="40" rx="6"/><rect x="1146" y="293" width="52" height="40" rx="6"/>
+    <rect x="1209" y="293" width="52" height="40" rx="6"/><rect x="1272" y="340" width="52" height="40" rx="6"/>
+  </g>
+  <g fill="#edf2f6" stroke="#dce4ec">
+    <rect x="1209" y="246" width="52" height="40" rx="6"/><rect x="1272" y="246" width="52" height="40" rx="6"/>
+    <rect x="1272" y="293" width="52" height="40" rx="6"/>
+    <rect x="1083" y="340" width="52" height="40" rx="6"/><rect x="1146" y="340" width="52" height="40" rx="6"/><rect x="1209" y="340" width="52" height="40" rx="6"/>
+  </g>
+  <rect x="996" y="412" width="14" height="14" rx="3" fill="#238c88"/>
+  <text x="1018" y="424" class="small">Z = 1</text>
+  <rect x="1072" y="412" width="14" height="14" rx="3" fill="#edf2f6" stroke="#dce4ec"/>
+  <text x="1094" y="424" class="small">Z = 0</text>
+  <text x="1255" y="426" text-anchor="middle" fill="#142c46" font-size="20">Pr(Z<tspan baseline-shift="sub" font-size="12">i,b</tspan><tspan baseline-shift="baseline"> = 1) = p</tspan></text>
+
+  <rect x="258" y="476" width="924" height="36" rx="18" fill="#e8eef5"/>
+  <text x="720" y="500" text-anchor="middle" fill="#344e68" font-size="16">HT estimation · Monte Carlo comparisons · inference diagnostics</text>
+  <text x="720" y="532" text-anchor="middle" fill="#7a8998" font-size="12">Conceptual illustration; not experimental results.</text>
+</svg>

@@ -2,7 +2,7 @@
 
 Run `python scripts/build_release.py` from the repository root. The builder uses an explicit file allowlist and the current working files, including the supplementary inference modules. Check changes before building: an uncommitted file can still be part of the release when it is explicitly listed. New intended source files must be added to the allowlist.
 
-The default outputs are `release_artifacts/costa-public.zip` and `release_artifacts/anonymous-submission.zip`, corresponding extracted directories, and a local audit record outside the archives. Both packages exclude every dataset directory and generated result, including synthetic examples. The generation and download scripts remain available. Only the public package retains the author information.
+The default outputs are `release_artifacts/costa-public.zip` and `release_artifacts/anonymous-submission.zip`, corresponding extracted directories, and a local audit record outside the archives. Both packages exclude every dataset directory and generated result, including synthetic examples. The generation and download scripts remain available. The explicitly reviewed SVG in `docs/assets/` is a conceptual illustration with no dataset records or experimental results; it is included in both packages. Only the public package retains the author information and externally hosted header badges.
 
 ## Submission package checks
 

@@ -1,6 +1,6 @@
 extends: base.yaml
 
-# Unified COSTA dataset profile for the Kaggle MovieLens 10M source.
+# Unified COSTA dataset profile for the official GroupLens MovieLens 10M source.
 # Shared simulation, outcome, optimization, and monitoring defaults are
 # inherited from configs/base.yaml.
 data:

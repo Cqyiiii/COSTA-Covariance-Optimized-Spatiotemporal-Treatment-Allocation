@@ -70,12 +70,12 @@ def load_retailrocket_events(raw_dir: str | Path) -> pd.DataFrame:
 
 
 def _find_movielens_ratings_file(raw_dir: Path) -> Path:
-    """Find a MovieLens ratings file in either official or Kaggle layouts.
+    """Find a MovieLens ratings file in flat or nested package layouts.
 
-    The Kaggle package used in the experiments may unzip files directly under
-    raw_dir or under a nested folder such as ml-10M100K/.  We therefore search
-    recursively, preferring ratings.dat because MovieLens 10M commonly uses the
-    double-colon DAT format.
+    The official GroupLens 10M archive contains a nested ml-10M100K/ folder.
+    The download script places its contents directly under raw_dir. Search
+    recursively to support both layouts, preferring the 10M double-colon DAT
+    format while retaining support for MovieLens CSV releases.
     """
     ordered_patterns = ["ratings.dat", "**/ratings.dat", "ratings.csv", "**/ratings.csv"]
     seen: set[Path] = set()
@@ -89,13 +89,13 @@ def _find_movielens_ratings_file(raw_dir: Path) -> Path:
                 return candidate
     raise FileNotFoundError(
         f"Cannot find ratings.dat or ratings.csv under {raw_dir}. "
-        "For the Kaggle MovieLens 10M package, run scripts/download_movielens10m.sh "
-        "or unzip the package under data/raw/ml-10m."
+        "For MovieLens 10M, run bash scripts/download_movielens10m.sh "
+        "or extract the official GroupLens archive under data/raw/ml-10m."
     )
 
 
 def load_movielens_ratings(raw_dir: str | Path) -> pd.DataFrame:
-    """Load MovieLens ratings from official or Kaggle package layouts.
+    """Load MovieLens ratings from flat or nested package layouts.
 
     Supported formats:
       - ratings.dat with columns userId::movieId::rating::timestamp

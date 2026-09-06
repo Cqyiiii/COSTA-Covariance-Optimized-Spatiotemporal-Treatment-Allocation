@@ -8,27 +8,46 @@ __pycache__/
 # Local environments
 .venv/
 .env
+.env.*
+kaggle.json
 
 # OS/editor
 .DS_Store
 .ipynb_checkpoints/
 
-# Data and generated outputs
-/data/raw/**
+# All local data, including generated synthetic examples
+/data/**
 !/data/raw/
 !/data/raw/README.md
 !/data/raw/retailrocket/
 !/data/raw/retailrocket/.gitkeep
 !/data/raw/ml-10m/
 !/data/raw/ml-10m/.gitkeep
-/data/processed/**
 !/data/processed/
 !/data/processed/.gitkeep
-/data/sample/*.csv
+!/data/sample/
+!/data/sample/.gitkeep
+
+# Generated outputs and release/build artifacts
 /outputs/**
 !/outputs/
 !/outputs/**/
 !/outputs/**/.gitkeep
+/release_artifacts/
+/build/
+/dist/
+
+# Dataset payloads and manual archives outside the standard directories
+*.csv
+*.tsv
+*.dat
+*.npy
+*.npz
+*.parquet
+*.zip
+*.tar
+*.tar.gz
+*.tgz
 
 # Large local figures/logs
 *.log

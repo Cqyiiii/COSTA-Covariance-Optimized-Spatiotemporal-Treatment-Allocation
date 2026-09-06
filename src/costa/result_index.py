@@ -196,7 +196,7 @@ def infer_prepared_dir(root: Path, sim: SimFolder, *, prefer_relative: bool = Tr
 
     Prefer the current package's standard relative path
     ``data/processed/{dataset}_top{N}_b{B}_k{K}``.  Old run_config.json files
-    often contain absolute paths such as ``/Users/...``; those are intentionally
+    often contain machine-specific absolute paths; those are intentionally
     ignored unless the standard path is unavailable and the absolute path exists.
     """
     standard_name = prepared_dir_name(sim.dataset_key, sim.n_items, sim.n_blocks, sim.top_k)

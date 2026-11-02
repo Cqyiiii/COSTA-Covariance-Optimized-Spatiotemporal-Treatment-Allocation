@@ -214,6 +214,7 @@ def write_objective_outputs(
 
 
 def parse_models(s) -> list[str]:
+    """Normalize aliases without replacing distinct potential-outcome models."""
     if isinstance(s, (list, tuple)):
         parts = [str(x).strip() for x in s if str(x).strip()]
     else:
@@ -223,8 +224,6 @@ def parse_models(s) -> list[str]:
     out = []
     for m in parts:
         cm = canonical_model_name(m)
-        if cm == "interaction_second_hop":
-            cm = "demand"
         if cm not in out:
             out.append(cm)
     return out
@@ -342,7 +341,7 @@ def build_parser() -> argparse.ArgumentParser:
         help="Simulation output directory. If omitted, uses outputs/sim/{prepared_name}_p{p}_mc{mc}_steps{steps}_di{d_item}_dt{d_time}_{optional_design_tag} under the package root.",
     )
     ap.add_argument("--output-root", default="outputs/sim")
-    ap.add_argument("--models", default="linear,nonlinear,demand", help="Comma-separated PO models: linear, nonlinear, demand.")
+    ap.add_argument("--models", default="linear,nonlinear,demand", help="Comma-separated PO models: linear, nonlinear, demand, interaction_second_hop (alias: second_hop). Default: linear,nonlinear,demand.")
     ap.add_argument("--designs", default="independent,rbsd_approx,cluster_leiden,static_graph_ocd,COSTA,COSTA_cluster_no_kro,COSTA_cluster_kro,COSTA_IC_lam0.2,COSTA_IC_lam1,COSTA_IC_lam5", help="Comma-separated designs to run.")
     ap.add_argument("--p", type=float, default=0.5)
     ap.add_argument("--mc", type=int, default=50)

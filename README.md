@@ -162,6 +162,14 @@ All commands below should be run from the repository root. Add `--no-progress` f
 
 ### Default-setting RMSE tables and Figure 1
 
+The default models remain `linear,nonlinear,demand`. For an optional second-hop
+ablation, select `--models interaction_second_hop` (alias `second_hop`) and use
+a separate `--out-dir`. This independent model uses `--second-hop-scale` and
+`--interaction-scale`, model seed ID 4, and the `interaction_second_hop` output
+label. Earlier versions of `run_simulation.py` silently replaced this selection
+with `demand`; those runs do not constitute second-hop results and should not be
+relabelled. Existing default-model results are unchanged.
+
 <details>
 <summary><strong>Run the main comparisons for RetailRocket and MovieLens</strong></summary>
 
